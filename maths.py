@@ -1,13 +1,3 @@
-# generate 10 sums in list
-#     loop through list
-#         ask sum
-#         record answer
-#             if correct store in correct list
-#             else store in incorrect list
-#         list overall score
-#         list correct answers
-#         list incorrect answers
-
 import cowsay
 
 from random import randint
@@ -45,7 +35,7 @@ def input_sum_choice():
     4. A mixture
     """
     print(a)
-    sum_choice = int(input())
+    sum_choice = int(input("Enter 1, 2, 3 or 4: "))
     return sum_choice
 
 
@@ -56,11 +46,8 @@ def get_sum_type(sum_choice):
     elif sum_choice == 2:
         sum_type = "-"
         return sum_type
-    elif sum_choice == 3:
-        sum_type = "x"
-        return sum_type
     else:
-        sum_type = "?"
+        sum_type = "x"
         return sum_type
 
 
@@ -132,9 +119,9 @@ def ask_questions(list_of_sums):
         clear()
         maths_symbol = get_sum_type(sum.sum_type)
         formatted_sum = f"{sum.number_1} {maths_symbol} {sum.number_2} = ?"
-        cowsay.stegosaurus(formatted_sum)
+        cowsay.cow(formatted_sum)
         # print(formatted_sum)
-        inputted_user_answer = input("? ")
+        inputted_user_answer = input("Please enter your answer: ")
         sum.user_answer = inputted_user_answer
         answered_questions.append(sum)
     return answered_questions
@@ -159,7 +146,7 @@ def display_results(answered_questions):
             formatted_sum = f"{r.number_1} {maths_symbol} {r.number_2} = {r.sum_answer}  Your answer: {r.user_answer}"
             print(formatted_sum)
     if len(wrong_answers) > 0:
-        print("\n\nWrong Answers:\n")
+        print("\nWrong Answers:\n")
         for w in wrong_answers:
             maths_symbol = get_sum_type(w.sum_type)
             formatted_sum = f"{w.number_1} {maths_symbol} {w.number_2} = {w.sum_answer}  Your answer: {w.user_answer}"
